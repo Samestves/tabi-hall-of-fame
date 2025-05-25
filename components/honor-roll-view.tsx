@@ -28,8 +28,8 @@ export function HonorRollView() {
     {
       title: "BEST MODS",
       members: [
-        { name: "Alex Johnson", avatar: "/placeholder.svg?height=120&width=120", level: "Elite" },
-        { name: "Sarah Williams", avatar: "/placeholder.svg?height=120&width=120", level: "Elite" },
+        { name: "Alex Johnson", avatar: "/avatars/ricarfonso.jpg", level: "Elite" },
+        { name: "Sarah Williams", avatar: "/avatars/tasniya.jpg", level: "Elite" },
       ],
       size: "large",
       icon: <Crown className="h-5 w-5" />,
@@ -39,9 +39,9 @@ export function HonorRollView() {
     {
       title: "BEST VOLUNTEERS",
       members: [
-        { name: "Michael Brown", avatar: "/placeholder.svg?height=100&width=100", level: "Pro" },
-        { name: "Emily Davis", avatar: "/placeholder.svg?height=100&width=100", level: "Pro" },
-        { name: "David Wilson", avatar: "/placeholder.svg?height=100&width=100", level: "Pro" },
+        { name: "Michael Brown", avatar: "/avatars/mori.jpg", level: "Pro" },
+        { name: "Emily Davis", avatar: "/avatars/qim.jpg", level: "Pro" },
+        { name: "David Wilson", avatar: "/avatars/sansa.jpg", level: "Pro" },
       ],
       size: "medium",
       icon: <Star className="h-4 w-4" />,
@@ -51,11 +51,11 @@ export function HonorRollView() {
     {
       title: "BEST WORKS",
       members: [
-        { name: "Robert Miller", avatar: "/placeholder.svg?height=80&width=80", level: "Rising" },
-        { name: "Jennifer Moore", avatar: "/placeholder.svg?height=80&width=80", level: "Rising" },
-        { name: "Thomas Anderson", avatar: "/placeholder.svg?height=80&width=80", level: "Rising" },
-        { name: "Lisa Garcia", avatar: "/placeholder.svg?height=80&width=80", level: "Rising" },
-        { name: "Kevin Martinez", avatar: "/placeholder.svg?height=80&width=80", level: "Rising" },
+        { name: "Robert Miller", avatar: "/avatars/pfpt.jpg", level: "Rising" },
+        { name: "Jennifer Moore", avatar: "/avatars/monirul.jpg", level: "Rising" },
+        { name: "Thomas Anderson", avatar: "/avatars/sobix.jpg", level: "Rising" },
+        { name: "Lisa Garcia", avatar: "/avatars/rifat.png", level: "Rising" },
+        { name: "Kevin Martinez", avatar: "/avatars/mrbean.jpg", level: "Rising" },
       ],
       size: "small",
       icon: <Medal className="h-3 w-3" />,

@@ -64,14 +64,20 @@ export function Footer({ onNavigate }: FooterProps) {
           <div>
             <h3
               className={cn(
-                "text-xl md:text-2xl font-bold mb-4 text-foreground flex items-center",
-                playfair.variable,
-                "font-serif tracking-tight",
+                "text-xl md:text-2xl font-bold mb-4 flex items-center uppercase tracking-wide",
               )}
+              style={{
+                fontFamily: "'Bebas Neue', 'Anton', Arial, sans-serif",
+                letterSpacing: "0.04em",
+                fontWeight: 700,
+                fontSize: "2rem",
+                background: "linear-gradient(90deg,#d1102b 0%,#ff6347 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
             >
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#d1102b] to-[#d1102b]/80 drop-shadow-sm">
-                Tabi – Hall of Fame
-              </span>
+              Tabi – Hall of Fame
             </h3>
             <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
               Honoring those who make Tabi special. A community-driven platform to celebrate the best of Tabi.
@@ -116,9 +122,11 @@ export function Footer({ onNavigate }: FooterProps) {
                 label="Tabipedia"
                 external
               />
-              <FooterLink href="#" label="Community Guidelines" />
-              <FooterLink href="#" label="Volunteer Application" />
-              <FooterLink href="https://t.me/+mZ7FoesXC9M4MDBh" label="Telegram Group" external />
+              <FooterLink
+                href="https://t.me/+mZ7FoesXC9M4MDBh"
+                label="Telegram Group"
+                external
+              />
             </ul>
           </div>
         </div>

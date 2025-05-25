@@ -1,0 +1,89 @@
+[
+  {
+    "id": 1,
+    "author": "Samx",
+    "handle": "@Samx",
+    "avatar": "/avatars/pfpt.jpg",
+    "content": "Thank you all for participating in the great Tabi Cup, we look forward to seeing you at the next event.\nThis is a Test",
+    "hasImage": true,
+    "image": "/images/fanta.png"
+  },
+  {
+    "id": 2,
+    "author": "Mori",
+    "handle": "@Mori",
+    "avatar": "/avatars/mori.jpg",
+    "content": "The support I've received from the Tabi community has been incredible. Thank you all! 🙏",
+    "hasImage": true,
+    "image": "/images/relax.png"
+  },
+  {
+    "id": 3,
+    "author": "Mr Bean",
+    "handle": "@MrBean",
+    "avatar": "/avatars/mrbean.jpg",
+    "content": "Tabi's new feature just changed the game. This is revolutionary! #TabiInnovation",
+    "hasImage": true,
+    "image": "/images/tl.jpeg"
+  },
+  {
+    "id": 4,
+    "author": "Qim",
+    "handle": "@Qim",
+    "avatar": "/avatars/qim.jpg",
+    "content": "I've been using Tabi for a month now and honestly... I can't imagine going back! 🔥✨\n\nThe UI is just *perfect* — clean, fast, and so intuitive. Every little detail feels carefully crafted, and it makes everyday tasks a joy instead of a chore. 🧠💡\n\nBig shoutout to the team behind it. You’ve nailed the experience. 🚀🙌",
+    "hasImage": false
+  },
+  {
+    "id": 5,
+    "author": "Ricarfonso",
+    "handle": "@Ricarfonso",
+    "avatar": "/avatars/ricarfonso.jpg",
+    "content": "The latest Tabi update is everything I've been waiting for! Kudos to the team. #TabiUpdates",
+    "hasImage": true,
+    "image": "/images/tp.jpeg"
+  },
+  {
+    "id": 6,
+    "author": "Rifat",
+    "handle": "@Rifat",
+    "avatar": "/avatars/rifat.png",
+    "content": "🏆 Tabi - Hall of Fame!\n\nBlown away by the polish and love behind this product. Every detail feels handcrafted. ✨🔥",
+    "hasImage": false
+  },
+  {
+    "id": 7,
+    "author": "Sansa",
+    "handle": "@Sansa",
+    "avatar": "/avatars/sansa.jpg",
+    "content": "Tabi's community events are the highlight of my week. Can't wait for the next one! #TabiEvents",
+    "hasImage": true,
+    "image": "/images/wt.jpeg"
+  },
+  {
+    "id": 8,
+    "author": "Sobix",
+    "handle": "@Sobix",
+    "avatar": "/avatars/sobix.jpg",
+    "content": "🙌 Just had the most amazing experience with Tabi support!\n\nI reached out with a small issue, and within minutes I had a kind, professional, and super helpful response. 💬⚡️\n\nThey didn’t just fix the problem — they made me feel *heard* and *valued* as a user. That level of care is rare these days. 💖🛠️\n\nThis is how customer service should be. Tabi, you’ve won my loyalty. 🫶🏽👏", 
+    "hasImage": false
+  },
+  {
+    "id": 9,
+    "author": "Tasniya",
+    "handle": "@Tasniya",
+    "avatar": "/avatars/tasniya.jpg",
+    "content": "The connections I've made through Tabi have been life-changing. Grateful for this platform!",
+    "hasImage": true,
+    "image": "/images/timage.jpeg"
+  },
+  {
+    "id": 10,
+    "author": "Monirul",
+    "handle": "@Monirul",
+    "avatar": "/avatars/monirul.jpg",
+    "content": "🏆 Tabi – Hall of Fame 🏆\n\nAfter testing countless tools, *Tabi* has earned a permanent spot in my daily workflow. It's fast, beautiful, and ridiculously smooth. 💫🧷\n\nFrom animations to shortcuts, everything feels like it's been designed by someone who actually *uses* it daily. Hats off! 🎩👏\n\nIf you're still hesitating... just try it. You’ll thank yourself later. 🔄✨",
+    "hasImage": true,
+    "image": "/images/hof.png"
+  }
+]

@@ -1,8 +1,8 @@
 "use client"
 
-import type React from "react"
+import React from "react"
 
-import { useState, useCallback, memo, useRef } from "react"
+import { useEffect, useState, useCallback, memo, useRef } from "react"
 import { Montserrat } from "next/font/google"
 import { cn } from "@/lib/utils"
 import { Card } from "@/components/ui/card"
@@ -17,6 +17,9 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { OfficialTweetsView } from "@/components/official-tweets-view"
 import { HonorRollView } from "@/components/honor-roll-view"
 import { Twitter, Award, Users, BookOpen } from "lucide-react"
+import initialTopTweets from "@/data/top-tweets.json"
+
+
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -204,95 +207,18 @@ const NavButton = memo(function NavButton({
   )
 })
 
+type TopTweet = {
+  id: string | number
+  author: string
+  handle: string
+  avatar?: string
+  content: string
+  hasImage?: boolean
+  image?: string
+}
+
 const TopTweetsView = memo(function TopTweetsView() {
-  const topTweets = [
-    {
-      id: 1,
-      author: "Jane Cooper",
-      handle: "@janecooper",
-      avatar: "/placeholder.svg?height=40&width=40",
-      content: "Just discovered Tabi and I'm absolutely blown away by the community here! #TabiLove",
-      hasImage: true,
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      id: 2,
-      author: "Alex Morgan",
-      handle: "@alexmorgan",
-      avatar: "/placeholder.svg?height=40&width=40",
-      content: "The support I've received from the Tabi community has been incredible. Thank you all! 🙏",
-      hasImage: false,
-    },
-    {
-      id: 3,
-      author: "Sam Wilson",
-      handle: "@samwilson",
-      avatar: "/placeholder.svg?height=40&width=40",
-      content: "Tabi's new feature just changed the game. This is revolutionary! #TabiInnovation",
-      hasImage: true,
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      id: 4,
-      author: "Emily Chen",
-      handle: "@emilychen",
-      avatar: "/placeholder.svg?height=40&width=40",
-      content: "I've been using Tabi for a month now and can't imagine going back. The UI is just perfect.",
-      hasImage: false,
-    },
-    {
-      id: 5,
-      author: "Michael Brown",
-      handle: "@michaelbrown",
-      avatar: "/placeholder.svg?height=40&width=40",
-      content: "The latest Tabi update is everything I've been waiting for! Kudos to the team. #TabiUpdates",
-      hasImage: true,
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      id: 6,
-      author: "Sarah Johnson",
-      handle: "@sarahjohnson",
-      avatar: "/placeholder.svg?height=40&width=40",
-      content: "Just had the most amazing experience with Tabi support. This is how customer service should be!",
-      hasImage: false,
-    },
-    {
-      id: 7,
-      author: "David Lee",
-      handle: "@davidlee",
-      avatar: "/placeholder.svg?height=40&width=40",
-      content: "Tabi's community events are the highlight of my week. Can't wait for the next one! #TabiEvents",
-      hasImage: true,
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      id: 8,
-      author: "Lisa Wang",
-      handle: "@lisawang",
-      avatar: "/placeholder.svg?height=40&width=40",
-      content: "I'm amazed at how Tabi continues to innovate while keeping the platform so intuitive. #UXDesign",
-      hasImage: false,
-    },
-    {
-      id: 9,
-      author: "Robert Taylor",
-      handle: "@roberttaylor",
-      avatar: "/placeholder.svg?height=40&width=40",
-      content: "The connections I've made through Tabi have been life-changing. Grateful for this platform!",
-      hasImage: true,
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      id: 10,
-      author: "Olivia Martinez",
-      handle: "@oliviamartinez",
-      avatar: "/placeholder.svg?height=40&width=40",
-      content:
-        "Tabi's commitment to user privacy and data protection sets the standard for the industry. #DigitalEthics",
-      hasImage: false,
-    },
-  ]
+  const [topTweets, setTopTweets] = useState<TopTweet[]>(initialTopTweets)
 
   // Calculate the number of columns based on screen size
   // This helps us determine how to handle the last row
@@ -305,59 +231,60 @@ const TopTweetsView = memo(function TopTweetsView() {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="mb-10 pl-4">
-        <h2 className={cn("text-left text-[#d1102b]", montserrat.className)}>
-          <span className="text-sm font-medium tracking-wider text-muted-foreground">TOP 10 TWEETS OF THE</span>
-          <span className="block text-3xl md:text-4xl font-bold mt-1 text-foreground">Week</span>
+        <h2 className={cn("text-left", montserrat.className)} style={{ color: "#d1102b" }}>
+          <span className="text-sm font-medium tracking-wider">TOP 10 TWEETS OF THE</span>
+          <span className="block text-3xl md:text-4xl font-bold mt-1">WEEK</span>
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-content-start">
-        {topTweets.map((tweet, index) => (
-          <motion.div
-            key={tweet.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.05 }}
-            className="w-full max-w-md" // Set a max width for consistency
-          >
-            <Card className="p-6 hover:shadow-lg transition-all duration-300 h-full flex flex-col border-border hover:border-[#d1102b]/30">
-              <div className="flex items-start gap-4 mb-4">
-                <Avatar>
-                  <AvatarImage src={tweet.avatar || "/placeholder.svg"} alt={tweet.author} />
-                  <AvatarFallback className="bg-[#d1102b]/20 text-[#d1102b]">{tweet.author.charAt(0)}</AvatarFallback>
-                </Avatar>
-                <div>
-                  <div className="flex flex-col">
-                    <span className="font-semibold text-foreground">{tweet.author}</span>
-                    <span className="text-muted-foreground text-sm">{tweet.handle}</span>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {topTweets.map((tweet, index) => {
+          const isLast = index === topTweets.length - 1
+          const isOnlyOneInLastRow = topTweets.length % 3 === 1 && isLast
+
+          return (
+            <motion.div
+              key={tweet.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
+              className={cn(
+                "w-full",
+                !isOnlyOneInLastRow && "max-w-md",
+                isOnlyOneInLastRow && "lg:col-span-3"
+              )}
+            >
+              <Card className="p-6 hover:shadow-lg transition-all duration-300 h-full flex flex-col border-border hover:border-[#d1102b]/30">
+                <div className="flex items-start gap-4 mb-4">
+                  <Avatar>
+                    <AvatarImage src={tweet.avatar || "/placeholder.svg"} alt={tweet.author} />
+                    <AvatarFallback className="bg-[#d1102b]/20 text-[#d1102b]">{tweet.author.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <div className="flex flex-col">
+                      <span className="font-semibold text-foreground">{tweet.author}</span>
+                      <span className="text-muted-foreground text-sm">{tweet.handle}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <p className="mb-4 flex-grow text-foreground/90">{tweet.content}</p>
-              {tweet.hasImage && (
-                <div className="relative w-full h-40 mt-auto rounded-md overflow-hidden">
-                  <Image
-                    src={tweet.image || "/placeholder.svg"}
-                    alt="Tweet image"
-                    fill
-                    className="object-cover"
-                    loading="lazy"
-                  />
-                </div>
-              )}
-            </Card>
-          </motion.div>
-        ))}
-
-        {/* Add empty divs to ensure the last row is centered if needed */}
-        {topTweets.length % 3 === 1 && (
-          <>
-            <div className="hidden lg:block w-full max-w-md"></div>
-            <div className="hidden lg:block w-full max-w-md"></div>
-          </>
-        )}
-        {topTweets.length % 3 === 2 && <div className="hidden lg:block w-full max-w-md"></div>}
-        {topTweets.length % 2 === 1 && <div className="hidden md:block lg:hidden w-full max-w-md"></div>}
+                <p className="mb-4 flex-grow text-foreground/90">{tweet.content}</p>
+                {tweet.hasImage && (
+                  <div className="relative w-full h-40 mt-auto rounded-md overflow-hidden">
+                    <Image
+                      src={tweet.image || "/placeholder.svg"}
+                      alt="Tweet image"
+                      fill
+                      className="object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+              </Card>
+            </motion.div>
+          )
+        })}
+        {/* Si la última fila tiene 2 tarjetas, añade un div vacío al final para centrar */}
+        {topTweets.length % 3 === 2 && <div className="hidden lg:block" />}
       </div>
     </div>
   )

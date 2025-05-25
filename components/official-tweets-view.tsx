@@ -44,22 +44,29 @@ export function OfficialTweetsView() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <Card className="p-8 shadow-lg border-border">
-          <div className="twitter-embed min-h-[600px] flex items-center justify-center w-full">
-            <TwitterTimelineEmbed
-              sourceType="profile"
-              screenName="Tabizens"
-              options={{
-                height: 600,
-                theme: "dark",
-              }}
-              noHeader
-              noBorders
-              noFooter
-              placeholder={<p className="text-muted-foreground">Loading tweets...</p>}
-            />
-          </div>
-        </Card>
+      <Card className="p-8 shadow-lg border-border text-center">
+        <p className="text-lg mb-4">
+          Follow us on&nbsp;
+          <a
+            href="https://twitter.com/Tabizens"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#1DA1F2] underline"
+          >
+            @Tabizens
+          </a>
+          &nbsp;to see our latest updates.
+        </p>
+        <a
+          href="https://twitter.com/Tabizens"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-[#1DA1F2] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#0d8ddb] transition"
+        >
+          View on Twitter
+        </a>
+      </Card>
+
       </motion.div>
     </div>
   )
