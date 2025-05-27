@@ -254,7 +254,12 @@ const TopTweetsView = memo(function TopTweetsView() {
                 isOnlyOneInLastRow && "lg:col-span-3"
               )}
             >
-              <Card className="p-6 hover:shadow-lg transition-all duration-300 h-full flex flex-col border-border hover:border-[#d1102b]/30">
+              <Card
+                className="p-6 hover:shadow-lg transition-all duration-300 h-full flex flex-col border-border hover:border-[#d1102b]/30 cursor-pointer"
+                onClick={() => window.open("https://x.com/tabizens", "_blank")}
+                tabIndex={0}
+                role="button"
+              >
                 <div className="flex items-start gap-4 mb-4">
                   <Avatar>
                     <AvatarImage src={tweet.avatar || "/placeholder.svg"} alt={tweet.author} />
