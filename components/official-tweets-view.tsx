@@ -88,7 +88,12 @@ export function OfficialTweetsView() {
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.3, delay: index * 0.05 }}
 					>
-						<Card className="p-8 flex flex-col border border-border hover:border-[#d1102b]/30 shadow-md bg-background/90"> {/* p-8 para más padding */}
+						<Card
+							className="p-8 flex flex-col border border-border hover:border-[#d1102b]/30 shadow-md bg-background/90 cursor-pointer transition-colors"
+							onClick={() => window.open("https://x.com/tabizens", "_blank")}
+							tabIndex={0}
+							role="button"
+						>
 							<div className="flex items-start gap-6 mb-4"> {/* gap-6 y mb-4 para más espacio */}
 								<Avatar className="w-14 h-14"> {/* Avatar más grande */}
 									<AvatarImage src={tweet.avatar || "/placeholder.svg"} alt={tweet.author} />
