@@ -78,3 +78,7 @@
     scroll-behavior: auto !important;
   }
 }
+
+.text-justify-inter-word {
+  text-justify: inter-word;
+}

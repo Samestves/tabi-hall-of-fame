@@ -230,7 +230,7 @@ const TopTweetsView = memo(function TopTweetsView() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="w-full px-2 md:px-6 lg:px-12 xl:px-20 2xl:px-32">
       <div className="mb-10 pl-4">
         <h2 className={cn("text-left", montserrat.className)} style={{ color: "#d1102b" }}>
           <span className="text-sm font-medium tracking-wider">TOP 10 TWEETS OF THE</span>
@@ -238,10 +238,33 @@ const TopTweetsView = memo(function TopTweetsView() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         {topTweets.map((tweet, index) => {
           const isLast = index === topTweets.length - 1
           const isOnlyOneInLastRow = topTweets.length % 3 === 1 && isLast
+
+          // Links personalizados para cada tarjeta
+          const tweetLinks = [
+            "https://x.com/MannyPere740275/status/1922663649425920341",
+            "https://x.com/Abdul_Hakim121/status/1922107920054935880",
+            "https://x.com/kbatron1/status/1922675137461047325",
+            "https://x.com/laceyk198277/status/1922748140441977082",
+            "https://x.com/QimJongUnch/status/1923373131885949378",
+            "https://x.com/MdMonirulI60399/status/1922156282837963144",
+            "https://x.com/rabbi435m/status/1922524425372442647",
+            "https://x.com/0xhasib_69_/status/1922583912502395212",
+            "https://x.com/TemnikVitalij/status/1922931434987159972",
+            "https://x.com/MikolaRabec/status/1927284621886083212",
+          ]
+          const tweetLink = tweetLinks[index] || "#"
+
+          // Estado para la orientación de la imagen
+          const [orientation, setOrientation] = useState<"landscape" | "portrait">("landscape")
+
+          const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+            const img = e.currentTarget
+            setOrientation(img.naturalWidth > img.naturalHeight ? "landscape" : "portrait")
+          }
 
           return (
             <motion.div
@@ -251,13 +274,12 @@ const TopTweetsView = memo(function TopTweetsView() {
               transition={{ duration: 0.3, delay: index * 0.05 }}
               className={cn(
                 "w-full",
-                !isOnlyOneInLastRow && "max-w-md",
-                isOnlyOneInLastRow && "lg:col-span-3"
+                isOnlyOneInLastRow && "lg:col-span-1 lg:col-start-2"
               )}
             >
               <Card
-                className="p-6 hover:shadow-lg transition-all duration-300 h-full flex flex-col border-border hover:border-[#d1102b]/30 cursor-pointer"
-                onClick={() => window.open("https://x.com/tabizens", "_blank")}
+                className="p-8 hover:shadow-lg transition-all duration-300 h-full flex flex-col border-border hover:border-[#d1102b]/30 cursor-pointer"
+                onClick={() => window.open(tweetLink, "_blank")}
                 tabIndex={0}
                 role="button"
               >
@@ -273,15 +295,34 @@ const TopTweetsView = memo(function TopTweetsView() {
                     </div>
                   </div>
                 </div>
-                <p className="mb-4 flex-grow text-foreground/90">{tweet.content}</p>
-                {tweet.hasImage && (
-                  <div className="relative w-full h-40 mt-auto rounded-md overflow-hidden">
+                <p
+                  lang="es"
+                  className="mb-4 flex-grow text-foreground/90 text-justify hyphens-auto text-justify-inter-word"
+                >
+                  {tweet.content}
+                </p>
+                {tweet.hasImage ? (
+                  <div
+                    className="relative w-full mt-auto rounded-md overflow-hidden aspect-[4/3] max-h-56 xl:max-h-64"
+                  >
                     <Image
                       src={tweet.image || "/placeholder.svg"}
                       alt="Tweet image"
                       fill
-                      className="object-cover"
+                      className="transition-all object-cover"
                       loading="lazy"
+                      onLoad={handleImageLoad}
+                    />
+                  </div>
+                ) : (
+                  <div className="relative w-full mt-auto rounded-md overflow-hidden aspect-[4/3] max-h-56 xl:max-h-64 flex items-center justify-center bg-gradient-to-br from-[#d1102b]/10 to-[#d1102b]/30">
+                    <Image
+                      src="/tabilogo.png"
+                      alt="Logo"
+                      width={80}
+                      height={80}
+                      className="object-contain opacity-70"
+                      priority={false}
                     />
                   </div>
                 )}
