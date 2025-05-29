@@ -69,11 +69,13 @@ export default function Home() {
         </div>
 
         {/* Contenido encima */}
-        <div className="relative z-20 flex flex-col md:flex-row w-full max-w-6xl mx-auto items-stretch">
+        <div className="relative z-20 flex flex-col md:flex-row w-full items-stretch">
           {/* Texto a la izquierda, con margen negativo para acercarlo más al borde */}
-          <div className="w-full md:w-1/2 flex flex-col justify-center items-start text-left pl-4 md:pl-8 lg:pl-0 lg:-ml-16 xl:-ml-32 py-8 md:py-0">
+          <div className="w-full md:w-1/2 flex flex-col justify-center items-start text-left py-8 md:py-0
+            pl-4 md:pl-8 lg:pl-16 xl:pl-24 2xl:pl-32
+            pr-4 md:pr-8 lg:pr-0">
             <h1
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-2 leading-tight"
+              className="text-4xl sm:text-left sm:text-5xl md:text-[5rem] lg:text-8xl xl:text-9xl font-bold mb-2 leading-tight"
               style={{
                 fontFamily: "'Bebas Neue', 'Anton', Arial, sans-serif",
                 background: "linear-gradient(90deg,rgb(190, 0, 0) 0%,rgb(255, 0, 0) 100%)",
@@ -85,7 +87,7 @@ export default function Home() {
               Hall of Fame
             </h1>
             <p
-              className="mt-2 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold"
+              className="mt-0 sm:mt-2 text-[0.54rem] sm:text-base md:text-[1.2rem] lg:text-[1.42rem] xl:text-3xl font-semibold"
               style={{
                 fontFamily: "'DM Sans', 'Inter', 'Poppins', Arial, sans-serif",
                 background: "linear-gradient(to right,rgb(226, 226, 226),rgb(255, 255, 255))",
@@ -97,8 +99,7 @@ export default function Home() {
               }}
             >
               CELEBRATING THE
-              <br className="md:hidden" />
-              <span className="hidden md:inline">&nbsp;</span>
+        
               LEGENDS OF TABI
             </p>
           </div>

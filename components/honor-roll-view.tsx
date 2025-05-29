@@ -24,41 +24,66 @@ const inter = Inter({
 })
 
 export function HonorRollView() {
-  const categories = [
+  type Member = {
+    name: string
+    tag: string
+    extra?: string
+    avatar?: string
+  }
+
+  const categories: {
+    title: string
+    members: Member[]
+    size: "large" | "medium" | "small"
+    icon: React.ReactNode
+    color: string
+    showBadge: boolean
+  }[] = [
     {
       title: "BEST MODS",
       members: [
-        { name: "Alex Johnson", avatar: "/avatars/ricarfonso.jpg", level: "Elite" },
-        { name: "Sarah Williams", avatar: "/avatars/tasniya.jpg", level: "Elite" },
+        { name: "Mitu", tag: "USDT", avatar: "/avatars/mitu.jpg" },
+        { name: "ZLOBArio", tag: "USDT", avatar: "/avatars/zloba.jpg" },
       ],
       size: "large",
       icon: <Crown className="h-5 w-5" />,
       color: "#FFD700",
-      showBadge: true,
+      showBadge: false,
+    },
+    {
+      title: "BEST CANDIDATES",
+      members: [
+        { name: "Samx", tag: "USDT", avatar: "/avatars/sam.jpg" },
+        { name: "Monirul", tag: "USDT", avatar: "/avatars/monirul.jpg" },
+      ],
+      size: "medium",
+      icon: <Trophy className="h-4 w-4" />,
+      color: "#4B9CD3",
+      showBadge: false,
     },
     {
       title: "BEST VOLUNTEERS",
       members: [
-        { name: "Michael Brown", avatar: "/avatars/mori.jpg", level: "Pro" },
-        { name: "Emily Davis", avatar: "/avatars/qim.jpg", level: "Pro" },
-        { name: "David Wilson", avatar: "/avatars/sansa.jpg", level: "Pro" },
+        { name: "Temnik", tag: "USDT", avatar: "/avatars/temnik.jpg" },
+        { name: "BtcCoiner", tag: "USDT", avatar: "/avatars/btcoiner.jpg" },
+        { name: "Hasib", tag: "NODO", avatar: "/avatars/hasib.jpg" },
       ],
       size: "medium",
       icon: <Star className="h-4 w-4" />,
       color: "#d1102b",
-      showBadge: true,
+      showBadge: false,
     },
     {
       title: "BEST WORKS",
       members: [
-        { name: "Robert Miller", avatar: "/avatars/pfpt.jpg", level: "Rising" },
-        { name: "Jennifer Moore", avatar: "/avatars/monirul.jpg", level: "Rising" },
-        { name: "Thomas Anderson", avatar: "/avatars/sobix.jpg", level: "Rising" },
-        { name: "Lisa Garcia", avatar: "/avatars/rifat.png", level: "Rising" },
-        { name: "Kevin Martinez", avatar: "/avatars/mrbean.jpg", level: "Rising" },
+        { name: "Creamie", tag: "USDT", avatar: "/avatars/creamie.png" },
+        { name: "Vladyslav", tag: "USDT", avatar: "/avatars/vlady.jpg" },
+        { name: "Winny", tag: "USDT", avatar: "/avatars/winy.jpg" },
+        { name: "Andrey", tag: "NODO", avatar: "/avatars/andrey.jpg" },
+        { name: "Jeong", tag: "NODO", avatar: "/avatars/jeong.png" },
       ],
       size: "small",
-      icon: <Medal className="h-3 w-3" />,
+      icon: <Medal className="h-4 w-4" />,
       color: "#FF6B35",
       showBadge: false,
     },
@@ -142,20 +167,16 @@ export function HonorRollView() {
                     <div
                       className={cn(
                         "relative rounded-full overflow-hidden transition-all duration-300",
+                        // BEST MODS (large)
                         category.size === "large" && "w-28 h-28 md:w-36 md:h-36",
-                        category.size === "medium" && "w-24 h-24 md:w-28 md:h-28",
-                        category.size === "small" && "w-20 h-20 md:w-24 md:h-24",
+                        // BEST CANDIDATES (custom: entre medium y large)
+                        category.title === "BEST CANDIDATES"
+                          ? "w-28 h-28 md:w-32 md:h-32"
+                          : category.size === "medium" && "w-24 h-24 md:w-28 md:h-28",
+                        // BEST WORKS (small, mejora responsividad)
+                        category.size === "small" && "w-16 h-16 xs:w-18 xs:h-18 sm:w-20 sm:h-20 md:w-24 md:h-24",
                       )}
                     >
-                      {/* Level Badge - Only show if showBadge is true */}
-                      {category.showBadge && (
-                        <div
-                          className="absolute -top-2 -right-2 z-20 px-2 py-1 rounded-full text-xs font-bold text-white shadow-lg"
-                          style={{ backgroundColor: category.color }}
-                        >
-                          {member.level}
-                        </div>
-                      )}
 
                       {/* Ring Animation */}
                       <motion.div
@@ -212,7 +233,7 @@ export function HonorRollView() {
                     </div>
                     <span
                       className={cn(
-                        "mt-3 font-bold text-foreground text-center",
+                        "mt-3 font-bold text-foreground text-center truncate w-20 sm:w-24 md:w-28",
                         inter.variable,
                         "font-sans",
                         category.size === "large" && "text-lg",
@@ -221,12 +242,20 @@ export function HonorRollView() {
                       )}
                     >
                       {member.name}
+                      {member.extra && (
+                        <span className="block text-xs text-muted-foreground">{member.extra}</span>
+                      )}
                     </span>
-                    {category.size === "large" && (
-                      <div className="mt-2 flex items-center text-[#FFD700]">
-                        <Award className="h-4 w-4 mr-1" />
-                        <span className="text-xs font-medium">Top Contributor</span>
-                      </div>
+                    {/* Etiquetas */}
+                    {member.tag === "USDT" && (
+                      <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded bg-green-600/90 text-xs font-semibold text-white">
+                        💵 USDT
+                      </span>
+                    )}
+                    {member.tag === "NODO" && (
+                      <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded bg-yellow-700/90 text-xs font-semibold text-white">
+                        🥉 MININODE
+                      </span>
                     )}
                   </motion.div>
                 ))}
