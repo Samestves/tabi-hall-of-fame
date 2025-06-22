@@ -42,8 +42,8 @@ export function HonorRollView() {
     {
       title: "BEST MODS",
       members: [
-        { name: "Mitu", tag: "USDT", avatar: "/avatars/mitu.jpg" },
-        { name: "ZLOBArio", tag: "USDT", avatar: "/avatars/zloba.jpg" },
+        { name: "MrBean", tag: "USDT", avatar: "/avatars/mrbean.jpg" },
+        { name: "ChristianAdi", tag: "USDT", avatar: "/avatars/christian.jpg" },
       ],
       size: "large",
       icon: <Crown className="h-5 w-5" />,
@@ -53,7 +53,7 @@ export function HonorRollView() {
     {
       title: "BEST CANDIDATES",
       members: [
-        { name: "Samx", tag: "USDT", avatar: "/avatars/sam.jpg" },
+        { name: "Samx", tag: "USDT", avatar: "/avatars/sam.png" },
         { name: "Monirul", tag: "USDT", avatar: "/avatars/monirul.jpg" },
       ],
       size: "medium",
@@ -64,9 +64,9 @@ export function HonorRollView() {
     {
       title: "BEST VOLUNTEERS",
       members: [
-        { name: "Temnik", tag: "USDT", avatar: "/avatars/temnik.jpg" },
-        { name: "BtcCoiner", tag: "USDT", avatar: "/avatars/btcoiner.jpg" },
-        { name: "Hasib", tag: "NODO", avatar: "/avatars/hasib.jpg" },
+        { name: "Uzain", tag: "NODO", avatar: "/avatars/uzaina.jpg" },
+        { name: "Tarun", tag: "USDT", avatar: "/avatars/tarun.jpg" },
+        { name: "Julius", tag: "USDT", avatar: "/avatars/julius.jpg" },
       ],
       size: "medium",
       icon: <Star className="h-4 w-4" />,
@@ -76,11 +76,11 @@ export function HonorRollView() {
     {
       title: "BEST WORKS",
       members: [
-        { name: "Creamie", tag: "USDT", avatar: "/avatars/creamie.png" },
-        { name: "Vladyslav", tag: "USDT", avatar: "/avatars/vlady.jpg" },
-        { name: "Winny", tag: "USDT", avatar: "/avatars/winy.jpg" },
-        { name: "Andrey", tag: "NODO", avatar: "/avatars/andrey.jpg" },
-        { name: "Jeong", tag: "NODO", avatar: "/avatars/jeong.png" },
+        { name: "Starix", tag: "NODO", avatar: "/avatars/starix.png" },
+        { name: "Mohmeh", tag: "NODO", avatar: "/avatars/mohmeh.png" },
+        { name: "NPolniuk", tag: "USDT", avatar: "/avatars/polniuk.jpg" },
+        { name: "Sobix", tag: "USDT", avatar: "/avatars/sobix.jpg" },
+        { name: "Farhana", tag: "USDT", avatar: "/avatars/farhana.jpg" },
       ],
       size: "small",
       icon: <Medal className="h-4 w-4" />,
