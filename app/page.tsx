@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/react";
+
 "use client"
 
 import React from "react"
@@ -167,6 +169,7 @@ export default function Home() {
 
       {/* Footer */}
       <Footer onNavigate={handleViewChange} />
+      <Analytics />
     </main>
   )
 }
