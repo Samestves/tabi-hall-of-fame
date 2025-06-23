@@ -1,9 +1,7 @@
-import { Analytics } from "@vercel/analytics/react";
-
 "use client"
 
+import { Analytics } from "@vercel/analytics/react";
 import React from "react"
-
 import { useEffect, useState, useCallback, memo, useRef } from "react"
 import { Montserrat } from "next/font/google"
 import { cn } from "@/lib/utils"
