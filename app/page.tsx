@@ -16,8 +16,9 @@ import { Footer } from "@/components/footer"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { OfficialTweetsView } from "@/components/official-tweets-view"
 import { HonorRollView } from "@/components/honor-roll-view"
-import { Twitter, Award, Users, BookOpen } from "lucide-react"
+import { Twitter, Award, Users, BookOpen, Camera } from "lucide-react"
 import initialTopTweets from "@/data/top-tweets.json"
+import { TabiTackView } from "@/components/tabi-tack-view"
 
 
 
@@ -27,7 +28,7 @@ const montserrat = Montserrat({
   display: "swap",
 })
 
-type ViewType = "official" | "tweets" | "honor" | "guide"
+type ViewType = "official" | "tweets" | "honor" | "guide" | "gallery"
 
 export default function Home() {
   const [activeView, setActiveView] = useState<ViewType>("tweets")
@@ -118,7 +119,7 @@ export default function Home() {
           {/* Premium Box with 4 Separate Buttons */}
           <div className="flex justify-center mb-12">
             <Card className="p-3 shadow-lg border-border bg-muted/50 max-w-3xl w-full">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
                 <NavButton
                   icon={<Twitter className="h-4 w-4 mr-2" />}
                   label="Official Tweets"
@@ -143,6 +144,12 @@ export default function Home() {
                   isActive={activeView === "guide"}
                   onClick={() => handleViewChange("guide")}
                 />
+                <NavButton
+                  icon={<Camera className="h-4 w-4 mr-2" />}
+                  label="Tabi Tack"
+                  isActive={activeView === "gallery"}
+                  onClick={() => handleViewChange("gallery")}
+                />
               </div>
             </Card>
           </div>
@@ -160,6 +167,7 @@ export default function Home() {
               {activeView === "tweets" && <TopTweetsView />}
               {activeView === "honor" && <HonorRollView />}
               {activeView === "guide" && <TabizensGuide />}
+              {activeView === "gallery" && <TabiTackView />}
             </motion.div>
           </AnimatePresence>
         </div>
