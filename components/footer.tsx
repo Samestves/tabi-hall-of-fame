@@ -243,10 +243,11 @@ function FooterLink({
 }) {
   if (onClick) {
     return (
-      <li>
+      <li className="w-auto">
         <button
           onClick={onClick}
-          className="text-muted-foreground hover:text-[#d1102b] transition-colors text-sm group flex items-center"
+          className="text-muted-foreground hover:text-[#d1102b] transition-colors text-sm group inline-flex items-center px-0"
+          style={{ width: "auto" }}
         >
           <span className="inline-block w-0 h-px bg-[#d1102b] mr-0 group-hover:w-2 group-hover:mr-2 transition-all duration-300"></span>
           {label}
@@ -256,12 +257,13 @@ function FooterLink({
   }
 
   return (
-    <li>
+    <li className="w-auto">
       <a
         href={href}
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
-        className="text-muted-foreground hover:text-[#d1102b] transition-colors text-sm group flex items-center"
+        className="text-muted-foreground hover:text-[#d1102b] transition-colors text-sm group inline-flex items-center px-0"
+        style={{ width: "auto" }}
       >
         <span className="inline-block w-0 h-px bg-[#d1102b] mr-0 group-hover:w-2 group-hover:mr-2 transition-all duration-300"></span>
         {label}

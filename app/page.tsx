@@ -31,7 +31,7 @@ const montserrat = Montserrat({
 type ViewType = "official" | "tweets" | "honor" | "guide" | "gallery"
 
 export default function Home() {
-  const [activeView, setActiveView] = useState<ViewType>("tweets")
+  const [activeView, setActiveView] = useState<ViewType>("official") // Cambia "tweets" por "official"
   const contentRef = useRef<HTMLDivElement>(null)
 
   const handleViewChange = useCallback((view: ViewType) => {
@@ -119,7 +119,7 @@ export default function Home() {
           {/* Premium Box with 4 Separate Buttons */}
           <div className="flex justify-center mb-12">
             <Card className="p-3 shadow-lg border-border bg-muted/50 max-w-3xl w-full">
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-y-2 md:gap-2">
                 <NavButton
                   icon={<Twitter className="h-4 w-4 mr-2" />}
                   label="Official Tweets"
@@ -196,6 +196,7 @@ const NavButton = memo(function NavButton({
     <button
       onClick={onClick}
       className={cn(
+        "w-full", // Asegura que todos los botones tengan el mismo ancho
         "relative flex items-center justify-center py-3 px-4 rounded-lg text-center transition-all duration-300 text-xs sm:text-sm font-medium overflow-hidden",
         isActive
           ? "bg-gradient-to-r from-[#d1102b] to-[#d1102b]/80 text-white shadow-md"
@@ -287,7 +288,7 @@ const TopTweetsView = memo(function TopTweetsView() {
               )}
             >
               <Card
-                className="p-8 hover:shadow-lg transition-all duration-300 h-full flex flex-col border-border hover:border-[#d1102b]/30 cursor-pointer"
+                className="p-4 md:p-5 hover:shadow-lg transition-all duration-300 h-full flex flex-col border-border hover:border-[#d1102b]/30 cursor-pointer"
                 onClick={() => window.open(tweetLink, "_blank")}
                 tabIndex={0}
                 role="button"
@@ -306,9 +307,30 @@ const TopTweetsView = memo(function TopTweetsView() {
                 </div>
                 <p
                   lang="es"
-                  className="mb-4 flex-grow text-foreground/90 text-justify hyphens-auto text-justify-inter-word"
+                  className="mb-4 flex-grow text-base sm:text-lg text-foreground/90 text-left break-words whitespace-pre-line leading-normal tracking-normal font-normal"
+                  style={{
+                    wordBreak: "break-word",
+                    fontFamily: "system-ui, Arial, sans-serif",
+                    letterSpacing: "normal",
+                    lineHeight: 1.6,
+                    hyphens: "manual", // evita cortes automáticos de palabras
+                  }}
                 >
-                  {tweet.content}
+                  {tweet.content.split(/(https?:\/\/[^\s]+)/g).map((part, i) =>
+                    /^https?:\/\//.test(part) ? (
+                      <a
+                        key={i}
+                        href={part}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#d1102b] underline break-all hover:text-[#a00b20] transition-colors"
+                      >
+                        {part}
+                      </a>
+                    ) : (
+                      part
+                    )
+                  )}
                 </p>
                 {tweet.hasImage ? (
                   <div

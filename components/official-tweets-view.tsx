@@ -35,7 +35,7 @@ const officialTweets = [
 				💥 Blow up your PFP with radioactive💢emojis? 
 
 				👉 Just 3 clicks to flex:   
-				1️⃣ Hit [https://tabichain.com]   
+				1️⃣ Hit --> https://tabichain.com   
 				2️⃣ Screenshot your new emoji avatar   
 				3️⃣ Tag us & yell "TOK TOK!" 🚨`,
         hasVideo: true,
@@ -154,7 +154,7 @@ export function OfficialTweetsView() {
                             transition={{ duration: 0.3, delay: index * 0.05 }}
                         >
                             <Card
-                                className="p-8 flex flex-col border border-border hover:border-[#d1102b]/30 shadow-md bg-background/90 cursor-pointer transition-colors"
+                                className="p-3 sm:p-5 md:p-8 flex flex-col border border-border hover:border-[#d1102b]/30 shadow-md bg-background/90 cursor-pointer transition-colors"
                                 onClick={() => window.open(tweetLinks[index] || "#", "_blank")}
                                 tabIndex={0}
                                 role="button"
@@ -174,7 +174,14 @@ export function OfficialTweetsView() {
                                     </div>
                                 </div>
                                 <p
-                                  className="mb-4 text-lg text-foreground/90 text-justify hyphens-auto text-justify-inter-word break-words whitespace-pre-line"
+                                  className="mb-4 text-base sm:text-lg text-foreground/90 text-left break-words whitespace-pre-line leading-relaxed tracking-normal font-normal"
+                                  style={{
+                                    wordBreak: "break-word",
+                                    hyphens: "auto",
+                                    letterSpacing: "normal",
+                                    fontFamily: "system-ui, Arial, sans-serif",
+                                    lineHeight: 1.6,
+                                  }}
                                 >
                                   {tweet.content.split(/(https?:\/\/[^\s]+)/g).map((part, i) =>
                                     /^https?:\/\//.test(part) ? (
@@ -184,6 +191,7 @@ export function OfficialTweetsView() {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-[#d1102b] underline break-all hover:text-[#a00b20] transition-colors"
+                                        onClick={e => e.stopPropagation()} // <-- Esto evita que el click en el link abra la Card completa
                                       >
                                         {part}
                                       </a>
@@ -193,7 +201,7 @@ export function OfficialTweetsView() {
                                   )}
                                 </p>
                                 {tweet.hasImage && tweet.image && (
-                                  <div className="relative w-full h-[28rem] md:h-[32rem] rounded-md overflow-hidden mx-auto max-w-3xl md:max-w-4xl">
+                                  <div className="relative w-full h-56 sm:h-72 md:h-[28rem] md:max-w-3xl lg:h-[32rem] lg:max-w-4xl rounded-md overflow-hidden mx-auto">
                                     <Image
                                       src={tweet.image}
                                       alt="Tweet image"
@@ -204,7 +212,7 @@ export function OfficialTweetsView() {
                                   </div>
                                 )}
                                 {tweet.hasVideo && tweet.video && (
-                                  <div className="relative w-full h-[28rem] md:h-[32rem] rounded-md overflow-hidden mx-auto max-w-3xl md:max-w-4xl">
+                                  <div className="relative w-full h-56 sm:h-72 md:h-[28rem] md:max-w-3xl lg:h-[32rem] lg:max-w-4xl rounded-md overflow-hidden mx-auto">
                                     <video
                                       ref={videoRef}
                                       controls
