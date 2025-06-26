@@ -20,7 +20,7 @@ const playfair = Playfair_Display({
   display: "swap",
 })
 
-type ViewType = "official" | "tweets" | "honor" | "guide"
+type ViewType = "official" | "tweets" | "honor" | "guide" | "gallery"
 
 interface FooterProps {
   onNavigate: (view: ViewType) => void
@@ -111,6 +111,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <FooterLink onClick={() => onNavigate("tweets")} label="Top Tweets" />
               <FooterLink onClick={() => onNavigate("honor")} label="Honor Roll Board" />
               <FooterLink onClick={() => onNavigate("guide")} label="Tabizens Guide" />
+              <FooterLink onClick={() => onNavigate("gallery")} label="Tabi Tack" />
             </ul>
           </div>
 

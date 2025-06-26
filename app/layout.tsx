@@ -1,19 +1,16 @@
 import type React from "react"
 import "@/app/globals.css"
 import { DM_Sans, Inter, Montserrat, Playfair_Display } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({ subsets: ["latin"] })
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat" })
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" })
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans" })
 
-
-
 export const metadata = {
   title: "Tabi - Hall of Fame",
   description: "Honoring those who make Tabi special",
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -27,9 +24,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
       </head>
       <body className={`${inter.className} ${montserrat.variable} ${playfair.variable} ${dmSans.variable}`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   )
