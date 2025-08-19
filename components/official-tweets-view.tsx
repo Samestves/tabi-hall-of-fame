@@ -14,7 +14,7 @@ const officialTweets = [
   { id: 7, link: "https://x.com/Tabichain/status/1912364847460679898" },
 ]
 
-export function OfficialTweetsEmbed() {
+export function OfficialTweetsView() {
   useEffect(() => {
     // Cargar script oficial de Twitter/X solo una vez
     const script = document.createElement("script")
